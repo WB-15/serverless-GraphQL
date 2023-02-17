@@ -1,0 +1,25 @@
+{
+  "name": "mediaconvert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "apollo-server-lambda": "^3.11.1",
+    "graphql": "^16.6.0",
+    "serverless": "^3.27.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^2.3.2",
+    "serverless-offline": "^6.9.0"
+  },
+  "scripts": {
+    "start": "sls offline start",
+    "deploy": "sls deploy",
+    "lint": "prettier --write '**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Maksym",
+  "license": "ISC"
+}

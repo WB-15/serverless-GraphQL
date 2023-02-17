@@ -1,0 +1,42 @@
+service: mediaconvert
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - .git/**
+    - .vscode/**        
+    - venv/**
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  memorySize: 128
+  timeout: 3
+  
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+custom:
+  allowedHeaders:
+    - Accept
+    - Content-Type
+    - Content-Length
+    - Authorization
+
+functions:
+  upload-video:
+    handler: api/v1/graphQL.graphqlHandler
+    description: Get /api/v1/videos/upload
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+          integration: lambda-proxy
+      - http:
+          path: graphql
+          method: get
+          cors: true
+          integration: lambda-proxy
